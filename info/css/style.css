@@ -1,0 +1,419 @@
+a {
+	text-decoration: none;
+    color: #000;
+}
+ul{
+    list-style: none;
+}
+p,h1,h2,h3,h4,h5,h6,a{
+    font-family: 'Noto Serif JP';
+}
+img{
+    vertical-align: bottom;
+    width: 100%;
+}
+dt,dd{
+    font-family: 'Noto Serif JP';
+}
+/*アニメーション指定 
+今後も使うことになるので上に分かりやすく置いておく*/
+@keyframes fadeIn { /*animation-nameで設定した値を書く*/
+    0% {opacity: 0} /*アニメーション開始時は不透明度0%*/
+    100% {opacity: 1} /*アニメーション終了時は不透明度100%*/
+}
+/*Javaアニメーション指定*/
+.fadein {
+    opacity : 0;
+    transform : translate(0, 100px);
+    transition : all 1s;
+} 
+.fadein.active{
+    opacity : 1;
+    transform : translate(0, 0);
+}
+/*全体ボックス*/
+.wrapper {
+    background-color: #eff0f3;
+    max-width: 2048px;
+}
+/*メニューバー*/
+.header{
+    background-color: #FFF;
+    position: fixed;
+    transition: 0.5s;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0px 10px 10px -6px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+.hide{
+    transform: translateY(-100%);
+}
+.header h1{
+    text-align: center;
+    font-size: 30px;
+    padding: 25px 0 25px 0;
+}
+.drawer{
+    position: relative;
+}
+/*ハンバーガーメニュー*/
+.drawer-menu{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.drawer-menu::-webkit-scrollbar{
+    display: none;
+}
+/*ハンバーガーメニューアイコン*/
+.menu-btn{
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    z-index: 2;
+    width: 70px;
+    height: 70px;
+    background: rgb(255, 255, 255);
+    color: #fff;
+}
+  
+  /*----------------------------
+  * メニュー本体
+  *----------------------------*/
+.menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #3c352eed;
+}
+
+/* ハンバーガーメニューの棒 */
+.header__nav.active {
+    transform: translateX(0);
+  }
+  
+.menu-btn.active span:nth-of-type(1) {
+    top: 23px;
+    left: 7px;
+    transform: translateY(6px) rotate(-45deg);
+}
+
+.menu-btn.active span:nth-of-type(2) {
+    opacity: 0;/*真ん中の線は透過*/
+}
+
+.menu-btn.active span:nth-of-type(3){
+    top: 35px;
+    left: 7px;
+    transform: translateY(-6px) rotate(45deg);
+}
+.drawer button span {
+    background-color: rgb(64, 64, 64);
+    display: block;
+    transition: all 0.4s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 0.45em;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.drawer button span:nth-of-type(1) {
+    top: 13px;
+}
+.drawer button span:nth-of-type(3)  {
+    top: 53px;
+}
+
+/* アニメーション前のメニューの状態 */
+.menu{
+    transform: translateX(100vw);
+    transition: all .3s ease;
+}
+  /* アニメーション後のメニューの状態 */
+.menu.is-active{
+    transform: translateX(0);
+}
+/*メニュー終わり*/
+/*メニュー内装飾*/
+.kinokon-img{
+    position: relative;
+}
+.kinokon{
+    position: absolute;
+}
+.aokinokon{
+    width: 50%;
+    transform: rotate(-15deg);
+    right: 7%;
+}
+.mikukinokon {
+    width: 30%;
+    transform: rotate(15deg);
+    right: 55%;
+    top: 180px;
+}
+.kinokon img{
+    width: 100%;
+}
+.menu{
+    padding: 30px 0 0 0;
+}
+.menu li{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+.menu li::after {
+    background-color: #FFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+    z-index: -1;
+}
+.menu li:hover::after {
+    transform: scale(1, 1);
+}
+
+.menu li a{
+    font-size: 45px;
+    display: block;
+    padding: 25px 0;
+    line-height: 1;
+    color: #FFF;
+    text-align: center;
+}
+.menu li a:hover{
+    color: #000;
+    animation: fadeIn 0.5s ease normal;
+}
+.contct{
+    display: flex;
+    width: 100%;
+    margin: 50px 0 0 0;
+}
+.contct li a{
+    display: block;
+}
+.contct li a::before{
+    content: '\f4f6';
+    font-weight: 900;
+    font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free";
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+}
+.contct li:nth-of-type(2) a::before{
+    content: '\f167';
+    font-weight: 900;
+    font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free";
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+}
+.contct li a:hover::before{
+    color: #000;
+}
+.content {
+    padding-top: 100px;
+}
+/*ボタン指定*/
+.button{
+    text-align: right;
+    margin: 0 auto 50px auto;
+    max-width: 1200px;
+    width: 90%;
+}
+.button a{
+    text-align: center;
+    display: inline-block;
+    border: solid 3px #000000;
+    background-color: #FFF;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+}
+.button a::before{
+	content: "↑";
+	color: #000000;
+	font-size: 25px;
+	display: block;
+	line-height: 1;
+    padding: 6px 0 0 0;
+}
+
+.mente{
+    display: none;
+    bottom: -45px;
+    background-color: #FFF;
+    position: absolute;
+    box-shadow: 0px 0px 15px -1px #777777;
+    border-radius: 10px;
+    width: 225px;
+    padding: 10px;
+    animation: fadeIn 1s ease normal;
+}
+.textmente1.appear{
+    display: block;
+    left: -35px;
+}
+.textmente2.appear{
+    display: block;
+    left: 40px;
+}
+.mente{
+    font-size: 20px !important;
+    border-bottom: none !important;
+    text-align: center;
+}
+.oshirase{
+    max-width: 1200px;
+    margin: 50px auto 50px;
+    width: 100%;
+}
+.orenge-band{
+    position: relative;
+}
+.orenge-band h2{
+    background-color: #fbb03b;
+    color: #FFF;
+    font-size: 50px;
+    font-weight: 100;
+    text-align: center;
+    padding: 5px 0;
+    margin: 45px 0;
+    animation: fadeIn 0.5s ease normal;
+    line-height: 1.1;
+}
+
+.orenge-band img{
+    width: 44px;
+    position: absolute;
+    animation: 15s linear infinite rotation1;
+    top: -45px;
+    right: -10%;
+}
+@keyframes rotation1{
+    0%{ 
+        transform:rotate(0);
+    }
+    100%{ 
+        transform:rotate(-4000deg); 
+        right: 100%;
+    }
+}
+.infotext{
+    padding: 0 30px;
+    border-bottom: 2px solid #fbb03b;
+}
+.infotext dt{
+    font-size: 23px;
+    padding: 10px 0;
+}
+.infotext dd{
+    font-size: 20px;
+    border-bottom: 2px dashed #fbb03b;
+    padding: 5px 0;
+}
+.infotext dd:nth-last-child(1){
+    border: none;
+}
+/*フッダー*/
+.footer{
+    background-color: #666666;
+}
+.footer p{
+    text-align: center;
+    padding: 20px 0;
+    color: #FFF;
+    font-size: 15px;
+}
+
+/*こっからスマホ版の指定*/
+@media screen and (max-width:780px){
+    .wrapper{
+        min-width: initial;
+        max-width: initial;
+    }
+    .aokinokon{
+        width: 70%;
+    }
+    .mikukinokon{ 
+        width: 60%;
+        right: 35%;
+    }
+    .menu-btn{
+        width: 40px;
+        height: 40px;
+        right: 20px;
+        top: 6px;
+    }
+    .drawer button span{
+        height: 0.3em;
+    }
+    .drawer button span:nth-of-type(1){
+        top: 8px;
+    }
+    .drawer button span:nth-of-type(3){
+        top: 28px;
+    }
+    .menu-btn.active span:nth-of-type(1){
+        top: 11px;
+        left: 4px;
+    }
+    .menu-btn.active span:nth-of-type(3){
+        top: 23px;
+        left: 4px;
+    }
+    .menu li a{
+        font-size: 30px;
+    }
+    .header h1{
+        font-size: 20px;
+        padding: 10px 0;
+    }
+    .content{
+        width: 100%;
+        padding-top: 50px;
+    }
+    .button{
+        width: 80%;
+    }
+    .button a{
+        width: 50px;
+        height: 50px;
+    }
+    .button a::before{
+        padding: 8px 0 0 0;
+        font-size: 30px;
+    }
+
+    .textmente1.appear{
+        left: 0%;
+        max-width: 225px;
+        min-width: 140px;
+        width: 30%;
+    }
+    .textmente2.appear{
+        left: 20%;
+        max-width: 225px;
+        min-width: 140px;
+        width: 30%;
+    }
+    .mente{
+        bottom: 22;
+    }
+}

@@ -1,0 +1,547 @@
+a {
+	text-decoration: none;
+    color: #000;
+}
+ul{
+    list-style: none;
+}
+p,h1,h2,h3,h4,a{
+    font-family: 'Noto Serif JP';
+}
+img{
+    vertical-align: bottom;
+    width: 100%;
+}
+video{
+    vertical-align: bottom;
+    width: 100%;
+}
+dt,dd{
+    font-family: 'Noto Serif JP';
+}
+.works-sp{
+    display: none;
+}
+/*CSSフェードインの指定*/
+/*animation: fadeIn 0.5s ease normal;と一緒に使うこと*/
+@keyframes fadeIn { /*animation-nameで設定した値を書く*/
+    0% {opacity: 0} /*アニメーション開始時は不透明度0%*/
+    100% {opacity: 1} /*アニメーション終了時は不透明度100%*/
+}
+/*Javaフェードインの指定*/
+.fadein {
+    opacity : 0;
+    transform : translate(0, 100px);
+    transition : all 1s;
+} 
+.fadein.active{
+    opacity : 1;
+    transform : translate(0, 0);
+}
+/*全部を包んでいるボックス指定*/
+.wrapper {
+    background-color: #eff0f3;
+    max-width: 2048px;
+}
+.header{
+    background-color: #FFF;
+    position: fixed;
+    transition: 0.5s;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0px 10px 10px -6px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+.hide{
+    transform: translateY(-100%);
+}
+.header h1{
+    text-align: center;
+    font-size: 30px;
+    padding: 25px 0 25px 0;
+}
+.drawer{
+    position: relative;
+}
+
+/*ハンバーガーメニュー*/
+.drawer-menu{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.drawer-menu::-webkit-scrollbar{
+    display: none;
+}
+/*ハンバーガーメニューアイコン*/
+.menu-btn{
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    z-index: 2;
+    width: 70px;
+    height: 70px;
+    background: rgb(255, 255, 255);
+    color: #fff;
+}
+  
+  /*----------------------------
+  * メニュー本体
+  *----------------------------*/
+.menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #3c352eed;
+}
+
+/* ハンバーガーメニューの棒 */
+.header__nav.active {
+    transform: translateX(0);
+  }
+  
+.menu-btn.active span:nth-of-type(1) {
+    top: 23px;
+    left: 7px;
+    transform: translateY(6px) rotate(-45deg);
+}
+
+.menu-btn.active span:nth-of-type(2) {
+    opacity: 0;/*真ん中の線は透過*/
+}
+
+.menu-btn.active span:nth-of-type(3){
+    top: 35px;
+    left: 7px;
+    transform: translateY(-6px) rotate(45deg);
+}
+.drawer button span {
+    background-color: rgb(64, 64, 64);
+    display: block;
+    transition: all 0.4s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 0.45em;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.drawer button span:nth-of-type(1) {
+    top: 13px;
+}
+.drawer button span:nth-of-type(3)  {
+    top: 53px;
+}
+
+/* アニメーション前のメニューの状態 */
+.menu{
+    transform: translateX(100vw);
+    transition: all .3s ease;
+}
+  /* アニメーション後のメニューの状態 */
+.menu.is-active{
+    transform: translateX(0);
+}
+/*メニュー終わり*/
+/*メニュー内装飾*/
+.kinokon-img{
+    position: relative;
+}
+.kinokon{
+    position: absolute;
+}
+.aokinokon{
+    width: 50%;
+    transform: rotate(-15deg);
+    right: 7%;
+}
+.mikukinokon {
+    width: 30%;
+    transform: rotate(15deg);
+    right: 55%;
+    top: 180px;
+}
+.kinokon img{
+    width: 100%;
+}
+.menu{
+    padding: 30px 0 0 0;
+}
+.menu li{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+.menu li::after {
+    background-color: #FFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+    z-index: -1;
+}
+.menu li:hover::after {
+    transform: scale(1, 1);
+}
+
+.menu li a{
+    font-size: 45px;
+    display: block;
+    padding: 25px 0;
+    line-height: 1;
+    color: #FFF;
+    text-align: center;
+}
+.menu li a:hover{
+    color: #000;
+    animation: fadeIn 0.5s ease normal;
+}
+.contct{
+    display: flex;
+    width: 100%;
+    margin: 50px 0 0 0;
+}
+.contct li a{
+    display: block;
+}
+.contct li a::before{
+    content: '\f4f6';
+    font-weight: 900;
+    font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free";
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+}
+.contct li:nth-of-type(2) a::before{
+    content: '\f167';
+    font-weight: 900;
+    font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free";
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+}
+.contct li a:hover::before{
+    color: #000;
+}
+/*ヘッダー*/
+.content{
+    padding-top: 100px;
+}
+.orenge-band h2{
+    background-color: #fbb03b;
+    color: #FFF;
+    font-size: 50px;
+    font-weight: 100;
+    text-align: center;
+    padding: 5px 0;
+    margin: 45px 0;
+    animation: fadeIn 0.5s ease normal;
+    line-height: 1.1;
+}
+/*コンテンツ指定*/
+.works{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.works-text-img{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 20px 20px;
+    animation: fadeIn 2s ease normal;
+    align-items: center;
+    width: calc((100% - 130px)/3);
+    max-width: 380px;
+}
+.content-popup p span:nth-of-type(-n+2){
+    font-size: 23px;
+}
+.content-popup p{
+    font-size: 23px;
+    line-height: 1.58;
+}
+.content-popup p span{
+    font-size: 35px;
+    font-weight: bold;
+}
+.works-img{
+    overflow: hidden;
+    background: linear-gradient(0deg, #fbb03b, 30%, #eff0f300);
+    flex-shrink: 0;
+    transition-duration: 0.4s;
+    width: 100%;
+    box-shadow: 0px 0px 0px 4px #fbb03b;
+}
+.works-img:hover{
+    transform: translateY(-10px);
+    box-shadow: -10px 10px 0px 5px #fbb03b;
+    position: relative;
+}
+.works-img:hover::before{
+    transition-duration: 0.4s;
+    content: '\f00e';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #000000;
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.works-img img{
+    transition-duration: 0.4s;
+    width: 100%;
+}
+.works-img img:hover{
+    opacity: 0.4;
+    transition-duration: 0.3s;
+}
+.content-popup{
+    overflow-y: scroll;
+    background: #fff;
+    padding: 30px;
+    width: 80vw;
+    height: 65%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    max-height: 600px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    align-items: center;
+    position: relative;
+}
+.content-popup::-webkit-scrollbar{
+    display: none;
+}
+.content-popup img,.content-popup video{
+    width: 60%;
+    margin: 0 20px 0 0;
+    max-width: 760px;
+}
+.popup{
+    display: none;
+    height: 100vh;
+    width: 100%;
+    background: #000000b0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.popup p{
+    font-size: 20px;
+    display: block;
+    background-color: #FFF;
+    position: sticky;
+    top: 0;
+    width: 60%;
+}
+.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.close-btn{
+    position: absolute;
+    top: 0%;
+    right: 1%;
+    background-color: initial;
+    border: none;
+    font-size: 40px;
+}
+
+/*ボタン指定*/
+.button{
+    text-align: right;
+    margin: 30px auto 50px auto;
+    max-width: 1200px;
+    width: 90%;
+}
+.button a{
+    text-align: center;
+    display: inline-block;
+    border: solid 3px #000000;
+    background-color: #FFF;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+}
+.button a::before{
+	content: "↑";
+	color: #000000;
+	font-size: 25px;
+	display: block;
+	line-height: 1;
+    padding: 6px 0 0 0;
+}
+/*フッダー*/
+.footer{
+    background-color: #666666;
+}
+.footer p{
+    text-align: center;
+    padding: 20px 0;
+    color: #FFF;
+}
+
+/*スマホ指定*/
+@media screen and (max-width:1000px){
+    .close-btn{
+        top: 0%;
+        right: 1%;
+    }
+    .content-popup{
+        width: 70%;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .content-popup img, .content-popup video{
+        margin: 0;
+        width: 80%;
+    }
+}
+@media screen and (max-width:780px){
+    .close-btn{
+        right: initial;
+        top: initial;
+        bottom: -10px;
+        color: #000000;
+    }
+    .wrapper{
+        width: 100%;
+        min-width: initial;
+        max-width: initial;
+    }
+    .aokinokon{
+        width: 70%;
+    }
+    .mikukinokon{ 
+        width: 60%;
+        right: 35%;
+    }
+    .header h1{
+        font-size: 20px;
+        padding: 10px 0;
+    }
+    .menu-btn{
+        width: 40px;
+        height: 40px;
+        right: 20px;
+        top: 6px;
+    }
+    .drawer button span{
+        height: 0.3em;
+    }
+    .drawer button span:nth-of-type(1){
+        top: 8px;
+    }
+    .drawer button span:nth-of-type(3){
+        top: 28px;
+    }
+    .menu-btn.active span:nth-of-type(1){
+        top: 11px;
+        left: 4px;
+    }
+    .menu-btn.active span:nth-of-type(3){
+        top: 23px;
+        left: 4px;
+    }
+    .menu li a{
+        font-size: 30px;
+    }
+    .header p{
+        font-size: 20px;
+        padding: 10px 0;
+    }
+    .content{
+        padding-top: 50px;
+    }
+    .content h1{
+        font-size: 30px;
+        margin: 20px 0;
+    }
+    .content-popup p span{
+        font-size: 25px;
+    }
+    .content-popup p span:nth-of-type(-n+2){
+        font-size: 16px;
+    }
+    .popup p{
+        width: inherit;
+    }
+    .works{
+        width: 90%;
+    }
+    .works-text-img{
+        display: block;
+        width: calc((100% - 100px)/2);
+    }
+    .button{
+        width: 80%;
+    }
+    .works-text-img p span{
+        font-size: 20px;
+    }
+    .works-text-img p{
+        font-size: 15px;
+        text-align: center;
+        margin-top: 25px;
+    }
+    .works-img{
+        overflow: initial;
+        margin: auto;
+        background: initial;
+        width: 100%;
+    }
+    .works-img img{
+        width: 100%;
+        height: 100%;
+    }
+    .works-img video{
+        width: 100%;
+        height: 100%;
+    }
+    .content-popup{
+        width: 70%;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .button a{
+        width: 50px;
+        height: 50px;
+    }
+    .button a::before{
+        padding: 8px 0 0 0;
+        font-size: 30px;
+    }
+    .content-popup img, .content-popup video{
+        width: 100%;
+        margin: 0;
+    }
+}
+@media screen and (max-width:450px){
+    .works-text-img{
+        width: 80%;
+    }
+}
